@@ -1,0 +1,51 @@
+<!-- src/app/transaction-list/transaction-list.component.html -->
+
+<div class="container">
+    <h2>Transaction List</h2>
+    
+    <!-- Search Form -->
+    <div class="search-form">
+      <input [(ngModel)]="customerId" placeholder="Customer ID" />
+      <input [(ngModel)]="accountNumber" placeholder="Account Number" />
+      <input [(ngModel)]="description" placeholder="Description" />
+      <button (click)="onSearch()">Search</button>
+    </div>
+  
+    <!-- Transactions Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Account Number</th>
+          <th>Transaction Amount</th>
+          <th>Description</th>
+          <th>Transaction Date</th>
+          <th>Transaction Time</th>
+          <th>Customer ID</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{transaction.id}}</td>
+          <td>{{transaction.accountNumber}}</td>
+          <td>{{transaction.trxAmount}}</td>
+          <td>{{transaction.description}}</td>
+          <td>{{transaction.trxDate}}</td>
+          <td>{{transaction.trxTime}}</td>
+          <td>{{transaction.customerId}}</td>
+          <td>
+            <button (click)="editTransaction(transaction)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination -->
+    <div class="pagination">
+      <button (click)="onPageChange(page - 1)" [disabled]="page === 0">Previous</button>
+      <span>Page {{page + 1}} of {{totalPages}}</span>
+      <button (click)="onPageChange(page + 1)" [disabled]="page >= totalPages - 1">Next</button>
+    </div>
+  </div>
+  

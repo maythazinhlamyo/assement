@@ -1,0 +1,11 @@
+<!-- src/app/transaction-edit/transaction-edit.component.html -->
+
+<div class="container">
+    <h2>Edit Transaction</h2>
+    <div *ngIf="transactionId">
+      <label for="description">New Description:</label>
+      <input type="text" [(ngModel)]="newDescription" placeholder="Enter new description" />
+      <button (click)="updateTransaction()">Update</button>
+    </div>
+  </div>
+  
